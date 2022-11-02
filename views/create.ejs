@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b2266adbd4.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='/style.css'>
+    <title><%= pageName %></title>
+</head>
+<body>
+    <h1 class='create_title'>Create a product</h1>
+    <%- include('./partials/nav.ejs') %>
+    <form class="create_product" action='/createproduct' method='POST' enctype="multipart/form-data">
+        <div class="image_input">
+            <input type="file" id="product_image" accept="image/jpg, image/png" name="file">
+            <div class="image_input_preview">
+                <img src="" alt="Image preview">
+                <span>Image preview</span>
+            </div>
+            <label for='product_image'>Choose a picture for your product</label>
+        </div>
+        <div class='inputs'>
+            <div class="input1">
+                <label for="product_name">Product name</label>
+                <input type="text" id="product_name" name="product_name">
+            </div>
+            <div class="input2">
+                <label>Product price</label>
+                <input type="number" id="product_price" name="product_price">
+            </div>
+            <input type='submit' value="Create Product" class='submit_btn'>
+        </div>
+
+    </form>
+    <script src='create.js'></script>
+</body>
+</html>

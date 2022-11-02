@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b2266adbd4.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='/style.css'>
+    <title><%= pageName %></title>
+</head>
+<body>
+<%- include('./partials/nav.ejs') %>
+    <div class="searchBar">
+        <input type="text" placeholder="Search products...">
+        <button type="button">Search</button>
+    </div>
+    <div class="catalogue">
+
+        <% products.forEach((element) => { %>
+        <div class="item" id= <%= element._id %>>
+            <img src= <%= 'data:' + element.product_image.contentType + ';base64,' + element.product_image.data.toString('base64') %> > 
+            <p> <%= element.product_name %> </p>
+            <div class="likes" id= <%= element._id %>>
+                <i class="fa-regular fa-heart" ></i>
+                <% if(element.likes == 1){ %>
+                    <p class='likesCounter'><%= element.likes + ' like' %> </p>
+                    <% } else {%>
+                    <p class='likesCounter'><%= element.likes + ' likes' %> </p>
+                    <% } %>
+            </div>
+            <p> <%= element.product_price %></p>
+            <button class='buy-btn'>Buy Now</button>
+        </div>
+        <% }) %>
+
+        </div>
+    </div>
+    <script src='app.js'></script>
+</body>
+</html>
